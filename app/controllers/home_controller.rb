@@ -4,7 +4,8 @@ class HomeController < ApplicationController
       if current_user.role == 'doctor'
         render "doctors/index"
       else
-        render "receptionists/index"
+        @patients = Patient.order(created_at: :desc)
+        render "patients/index"
       end
     else
       redirect_to new_user_session_path

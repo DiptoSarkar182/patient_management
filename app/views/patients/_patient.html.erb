@@ -1,0 +1,8 @@
+<div>
+  Patients Name:
+  <%= link_to patient.full_name, patient_path(patient) %>
+</div>
+<div>
+  Assigned to Dr.
+  <%= patient.doctor.full_name %>
+</div>

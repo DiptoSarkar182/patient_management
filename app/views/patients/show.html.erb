@@ -1,0 +1,14 @@
+<div>
+  Patients Name:
+  <%=  @patient.full_name%>
+</div>
+<div>
+  Assigned to Dr.
+  <%= @patient.doctor.full_name %>
+</div>
+<div>
+  <%= link_to "Edit", edit_patient_path %>
+</div>
+<div>
+  <%= link_to "Delete", patient_path(@patient), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
+</div>

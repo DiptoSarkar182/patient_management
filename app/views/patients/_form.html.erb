@@ -1,0 +1,31 @@
+<%= form_with(model: patient) do |form| %>
+  <% if patient.errors.any? %>
+    <div role="alert" >
+      <h2 ><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+      <ul>
+        <% patient.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :doctor %>
+    <%= form.collection_select :doctor_id, User.where(role: 'doctor'), :id, :full_name_and_speciality %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

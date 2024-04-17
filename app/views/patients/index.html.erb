@@ -1,0 +1,10 @@
+<div>
+  All the registered patient
+</div>
+<div >
+  <% @patients.each do |patient| %>
+    <hr>
+    <%= render patient %>
+    <hr>
+  <% end %>
+</div>
