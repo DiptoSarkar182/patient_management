@@ -22,7 +22,12 @@
 
   <div>
     <%= form.label :doctor %>
-    <%= form.collection_select :doctor_id, User.where(role: 'doctor'), :id, :full_name_and_speciality %>
+    <%= form.collection_select :doctor_id, User.where(role: 'doctor').order(:first_name), :id, :full_name_and_speciality %>
+  </div>
+
+  <div>
+    <%= form.label :appointment_date %>
+    <%= form.datetime_field :appointment_date %>
   </div>
 
   <div>

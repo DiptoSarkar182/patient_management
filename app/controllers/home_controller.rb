@@ -2,10 +2,9 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
       if current_user.role == 'doctor'
-        render "doctors/index"
+        redirect_to doctors_path
       else
-        @patients = Patient.order(created_at: :desc)
-        render "patients/index"
+        redirect_to patients_path
       end
     else
       redirect_to new_user_session_path

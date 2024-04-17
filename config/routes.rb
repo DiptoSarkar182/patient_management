@@ -10,4 +10,9 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :patients
+  resources :doctors do
+    collection do
+      get :patients_vs_days_graph
+    end
+  end
 end

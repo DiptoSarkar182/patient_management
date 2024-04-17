@@ -31,6 +31,8 @@
           <div>
             <% if current_user.role == 'receptionist' %>
             <%= link_to "Register a new patient", new_patient_path %>
+            <%else %>
+              <%=link_to "See Patients vs Days Graph", patients_vs_days_graph_doctors_path %>
             <% end %>
           </div>
         </div>

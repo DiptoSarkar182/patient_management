@@ -5,10 +5,21 @@
 <div>
   Assigned to Dr.
   <%= @patient.doctor.full_name %>
+  <% if @patient.appointment_date %>
+    on <%= @patient.appointment_date.strftime('%B %d, %Y at %I:%M%p') %>
+  <% end %>
 </div>
 <div>
-  <%= link_to "Edit", edit_patient_path %>
+  Registered by,
+  <%= @patient.registered_by.full_name %>
 </div>
 <div>
-  <%= link_to "Delete", patient_path(@patient), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
+  <% if current_user.role == 'receptionist' && current_user == @patient.registered_by %>
+    <div>
+      <%= link_to "Edit", edit_patient_path %>
+    </div>
+    <div>
+      <%= link_to "Delete", patient_path(@patient), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    </div>
+  <% end %>
 </div>

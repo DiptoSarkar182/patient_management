@@ -1,0 +1,8 @@
+<div>
+  <%= patient.full_name %>
+</div>
+<div>
+  <% if patient.appointment_date %>
+    on <%= patient.appointment_date.strftime('%B %d, %Y at %I:%M%p') %>
+  <% end %>
+</div>

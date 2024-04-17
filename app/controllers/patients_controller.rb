@@ -1,5 +1,8 @@
 class PatientsController < ApplicationController
 
+  def index
+    @patients = Patient.order(created_at: :desc)
+  end
   def new
     @patient = Patient.new
   end
@@ -43,6 +46,7 @@ class PatientsController < ApplicationController
 
   private
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :doctor_id)
+    params.require(:patient).permit(:first_name, :last_name, :doctor_id,
+                                    :appointment_date)
   end
 end

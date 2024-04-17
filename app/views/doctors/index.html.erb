@@ -1,1 +1,10 @@
-hello from doctor index page
+<div>
+  Your patients
+</div>
+<div >
+  <% @patients.each do |patient| %>
+    <hr>
+    <%= render "doctors/patient", patient: patient %>
+    <hr>
+  <% end %>
+</div>
