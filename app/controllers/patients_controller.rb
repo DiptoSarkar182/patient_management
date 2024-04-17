@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
 
-  before_action :verify_patient
+  before_action :verify_patient, except: [:show]
   def index
     @patients = Patient.order(created_at: :desc)
   end
