@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
 
+  before_action :verify_patient
   def index
     @patients = Patient.order(created_at: :desc)
   end
@@ -48,5 +49,11 @@ class PatientsController < ApplicationController
   def patient_params
     params.require(:patient).permit(:first_name, :last_name, :doctor_id,
                                     :appointment_date)
+  end
+
+  def verify_patient
+    unless current_user.role == 'receptionist'
+      redirect_to root_path, alert: 'You are not authorized to view this page.'
+    end
   end
 end

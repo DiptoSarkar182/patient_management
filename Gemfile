@@ -69,3 +69,4 @@ end
 gem "devise", "~> 4.9"
 gem 'faker', groups: [:development, :test]
 gem 'groupdate'
+gem "chartkick"

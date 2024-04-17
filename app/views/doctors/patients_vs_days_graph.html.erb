@@ -1,33 +1,3 @@
-
-<turbo-frame id="patients_graph">
-  <canvas id="myChart"></canvas>
-</turbo-frame>
-
-<script>
-    document.addEventListener('turbo:load', function() {
-        var ctx = document.getElementById('myChart');
-        if (ctx) { // Check if the element exists on the page
-            ctx = ctx.getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: <%= @patients_by_day.keys.map { |date| date.strftime('%Y-%m-%d') }.to_json.html_safe %>,
-                    datasets: [{
-                        label: 'Number of patients registered',
-                        data: <%= @patients_by_day.values %>,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        }
-    });
-</script>
+<div>
+  <%= area_chart @patients_by_day, xtitle: "Date", ytitle: "Patients" %>
+</div>
