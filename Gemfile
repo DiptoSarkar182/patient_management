@@ -70,3 +70,4 @@ gem "devise", "~> 4.9"
 gem 'faker', groups: [:development, :test]
 gem 'groupdate'
 gem "chartkick"
+gem "tailwindcss-rails", "~> 2.4"
