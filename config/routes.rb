@@ -15,4 +15,11 @@ Rails.application.routes.draw do
       get :patients_vs_days_graph
     end
   end
+
+  resources :demo_logins do
+    collection do
+      post :doctor_demo_login
+      post :receptionist_demo_login
+    end
+  end
 end
