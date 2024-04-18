@@ -3,7 +3,33 @@
   <%=  @patient.full_name%>
 </div>
 <div>
-  Assigned to Dr.
+  <% if @patient.date_of_birth %>
+    Age: <%= ((Time.zone.now - @patient.date_of_birth.to_time) / 1.year.seconds).floor %>
+  <% else %>
+    Date of birth not available
+  <% end %>
+</div>
+
+<div>
+  Allergy:-
+  <% if @patient.allergies.present? %>
+    <%= @patient.allergies %>
+  <% else %>
+    No known allergy
+  <% end %>
+</div>
+
+<div>
+  Chief Complaints:-
+  <% if @patient.chief_complaints.present? %>
+    <%= @patient.chief_complaints %>
+  <% else %>
+    Patient will describe on his/her own to doctor
+  <% end %>
+</div>
+
+<div>
+  Registered to Dr.
   <%= @patient.doctor.full_name %>
   <% if @patient.appointment_date %>
     on <%= @patient.appointment_date.strftime('%B %d, %Y at %I:%M%p') %>
@@ -13,6 +39,7 @@
   Registered by,
   <%= @patient.registered_by.full_name %>
 </div>
+
 <div>
   <% if current_user.role == 'receptionist' && current_user == @patient.registered_by %>
     <div>

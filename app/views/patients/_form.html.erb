@@ -1,23 +1,33 @@
 <%= form_with(model: patient) do |form| %>
-  <% if patient.errors.any? %>
-    <div role="alert" >
-      <h2 ><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
-      <ul>
-        <% patient.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div>
     <%= form.label :first_name %>
     <%= form.text_field :first_name %>
+    <% if patient.errors[:first_name].any? %>
+      <div role="alert">
+        <%= patient.errors.full_messages_for(:first_name).join(", ") %>
+      </div>
+    <% end %>
   </div>
 
   <div>
     <%= form.label :last_name %>
     <%= form.text_field :last_name %>
+    <% if patient.errors[:last_name].any? %>
+      <div role="alert">
+        <%= patient.errors.full_messages_for(:last_name).join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :date_of_birth %>
+    <%= form.datetime_field :date_of_birth %>
+    <% if patient.errors[:date_of_birth].any? %>
+      <div role="alert">
+        <%= patient.errors.full_messages_for(:date_of_birth).join(", ") %>
+      </div>
+    <% end %>
   </div>
 
   <div>
@@ -28,6 +38,21 @@
   <div>
     <%= form.label :appointment_date %>
     <%= form.datetime_field :appointment_date %>
+    <% if patient.errors[:appointment_date].any? %>
+      <div role="alert">
+        <%= patient.errors.full_messages_for(:appointment_date).join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label "Any Allergies?" %>
+    <%= form.text_area :allergies %>
+  </div>
+
+  <div>
+    <%= form.label "Chief Complaints:" %>
+    <%= form.text_area :chief_complaints %>
   </div>
 
   <div>

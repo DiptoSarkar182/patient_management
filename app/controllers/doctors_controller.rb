@@ -8,9 +8,12 @@ class DoctorsController < ApplicationController
     @patients = current_user.patients
     @patients_by_day = @patients.group_by_day(:appointment_date).count
   end
-end
-def verify_doctor
-  unless current_user.role == 'doctor'
-    redirect_to root_path, alert: 'You are not authorized to view this page.'
+
+  private
+  def verify_doctor
+    unless current_user.role == 'doctor'
+      redirect_to root_path, alert: 'You are not authorized to view this page.'
+    end
   end
+
 end

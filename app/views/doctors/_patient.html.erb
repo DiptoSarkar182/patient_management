@@ -1,5 +1,5 @@
 <div>
-  <%= patient.full_name %>
+  <%= link_to patient.full_name, patient_path(patient) %>
 </div>
 <div>
   <% if patient.appointment_date %>

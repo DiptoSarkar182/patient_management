@@ -48,7 +48,8 @@ class PatientsController < ApplicationController
   private
   def patient_params
     params.require(:patient).permit(:first_name, :last_name, :doctor_id,
-                                    :appointment_date)
+                                    :appointment_date, :date_of_birth,
+                                    :allergies, :chief_complaints)
   end
 
   def verify_patient
